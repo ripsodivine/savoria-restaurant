@@ -1,3 +1,385 @@
 /* Savoria Restaurant - Main Stylesheet
    Author: Justin Ryan Mukunzi (220270)
    Styles will be added here */
+   
+/* -----------------------------------------------
+   1. CSS VARIABLES
+----------------------------------------------- */
+:root {
+  --gold:         #c8922a;
+  --gold-light:   #e8b04a;
+  --charcoal:     #1a1a1a;
+  --cream:        #f5f0e8;
+  --nav-bg:       #1a1a1a;
+  --nav-height:   70px;
+  --dark-bg:      #0f0f0f;
+  --dark-surface: #1c1c1c;
+  --dark-text:    #e0d8cc;
+  --speed:        0.3s;
+}
+
+/* -----------------------------------------------
+   2. BASE
+----------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: #fff;
+  color: var(--charcoal);
+  padding-top: var(--nav-height);
+  transition: background-color var(--speed), color var(--speed);
+}
+
+img { max-width: 100%; height: auto; }
+
+/* -----------------------------------------------
+   3. DARK MODE
+----------------------------------------------- */
+[data-theme="dark"] {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+[data-theme="dark"] .section-cream { background-color: var(--dark-surface) !important; }
+[data-theme="dark"] .dish-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .contact-card { background-color: #252525; border-color: #333; }
+[data-theme="dark"] .text-muted { color: #999 !important; }
+[data-theme="dark"] .section-title { color: var(--dark-text); }
+[data-theme="dark"] .dish-desc { color: #bbb; }
+[data-theme="dark"] .form-control {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: var(--dark-text);
+}
+
+/* -----------------------------------------------
+   4. NAVBAR
+----------------------------------------------- */
+#mainNav {
+  background-color: var(--nav-bg);
+  height: var(--nav-height);
+  border-bottom: 2px solid var(--gold);
+  transition: box-shadow var(--speed);
+}
+#mainNav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+
+.navbar-brand {
+  font-family: 'Georgia', serif;
+  font-size: 1.6rem;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+.brand-gold { color: var(--gold); }
+
+.navbar-nav .nav-link {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  transition: color var(--speed);
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active { color: var(--gold) !important; }
+
+.btn-reserve {
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  border-radius: 50px;
+  padding: 0.35rem 1.1rem !important;
+  transition: background-color var(--speed), color var(--speed);
+}
+.btn-reserve:hover {
+  background-color: var(--gold) !important;
+  color: #fff !important;
+}
+
+.navbar-toggler { border-color: rgba(255,255,255,0.3); }
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2c255%2c255%2c0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* -----------------------------------------------
+   5. HERO
+----------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - var(--nav-height));
+  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,5,0,0.65) 0%, rgba(10,5,0,0.45) 60%, rgba(10,5,0,0.75) 100%);
+}
+.hero-content { position: relative; z-index: 1; padding: 2rem 1rem; }
+.hero-tagline {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Page hero — shorter banner for inner pages */
+.page-hero {
+  background-color: var(--charcoal);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 5rem 0;
+  text-align: center;
+  color: #fff;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10,5,0,0.65);
+}
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero h1 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+}
+.page-hero p { font-size: 1.1rem; opacity: 0.85; }
+
+/* -----------------------------------------------
+   6. SECTION HELPERS
+----------------------------------------------- */
+.section-cream { background-color: var(--cream); }
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+/* -----------------------------------------------
+   7. DISH CARDS
+----------------------------------------------- */
+.dish-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: transform var(--speed), box-shadow var(--speed);
+}
+.dish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+.dish-img {
+  padding-top: 60%;
+  background-size: cover;
+  background-position: center;
+  background-color: #d4c4b0;
+}
+.dish-body { padding: 1.25rem; }
+.dish-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 50px;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.dish-name { font-family: 'Georgia', serif; font-size: 1.15rem; margin-bottom: 0.5rem; }
+.dish-desc { font-size: 0.875rem; color: #666; line-height: 1.6; }
+.dish-price { font-weight: 700; color: var(--gold); font-size: 1.1rem; margin-bottom: 0; }
+
+/* -----------------------------------------------
+   8. TESTIMONIALS
+----------------------------------------------- */
+.testimonial-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 100%;
+  transition: box-shadow var(--speed);
+}
+.testimonial-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.stars .bi { color: var(--gold); font-size: 1rem; }
+.testimonial-card blockquote {
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.testimonial-author { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 0; }
+
+/* -----------------------------------------------
+   9. CTA BANNER
+----------------------------------------------- */
+.reservation-cta {
+  background-color: var(--charcoal);
+  background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.reservation-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10,5,0,0.78);
+}
+.reservation-cta .container { position: relative; z-index: 1; }
+
+/* -----------------------------------------------
+   10. CONTACT CARDS
+----------------------------------------------- */
+.contact-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: box-shadow var(--speed), transform var(--speed);
+}
+.contact-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.contact-card i { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+
+/* -----------------------------------------------
+   11. FORMS
+----------------------------------------------- */
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 0.2rem rgba(200,146,42,0.25);
+}
+.form-error {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+#formSuccess, #resSuccess {
+  display: none;
+}
+
+/* -----------------------------------------------
+   12. ABOUT PAGE — VALUE CARDS
+----------------------------------------------- */
+.value-card {
+  border-radius: 12px;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #eee;
+  text-align: center;
+  transition: box-shadow var(--speed);
+}
+.value-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.value-card i { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+
+[data-theme="dark"] .value-card {
+  background-color: #252525;
+  border-color: #333;
+}
+
+/* -----------------------------------------------
+   13. FOOTER
+----------------------------------------------- */
+.site-footer {
+  background-color: var(--charcoal);
+  color: #ccc;
+  padding: 3rem 0 1.5rem;
+}
+.footer-brand { font-family: 'Georgia', serif; font-size: 1.5rem; color: #fff; }
+.footer-heading {
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 0.4rem; font-size: 0.875rem; color: #aaa; }
+.footer-links a { color: #aaa; text-decoration: none; transition: color var(--speed); }
+.footer-links a:hover { color: var(--gold); }
+.footer-social a {
+  color: #aaa;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: color var(--speed);
+  text-decoration: none;
+}
+.footer-social a:hover { color: var(--gold); }
+.footer-divider { border-color: #333; }
+
+/* -----------------------------------------------
+   14. BUTTONS
+----------------------------------------------- */
+.btn-gold {
+  background-color: var(--gold);
+  color: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background-color var(--speed), transform var(--speed);
+}
+.btn-gold:hover {
+  background-color: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.text-gold { color: var(--gold) !important; }
+
+/* -----------------------------------------------
+   15. ANIMATIONS
+----------------------------------------------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-tagline  { animation: fadeInUp 0.7s ease 0.1s both; }
+.hero-title    { animation: fadeInUp 0.7s ease 0.3s both; }
+.hero-subtitle { animation: fadeInUp 0.7s ease 0.5s both; }
+.hero-content .d-flex { animation: fadeInUp 0.7s ease 0.7s both; }
+
+/* -----------------------------------------------
+   16. RESPONSIVE
+----------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-section { background-attachment: scroll; }
+  .hero-title { font-size: 2.4rem; }
+  .section-title { font-size: 1.8rem; }
+}

@@ -1,7 +1,7 @@
 /* Savoria Restaurant - Main Stylesheet
    Author: Justin Ryan Mukunzi (220270)
    Styles will be added here */
-   
+
 /* -----------------------------------------------
    1. CSS VARIABLES
 ----------------------------------------------- */
@@ -382,4 +382,35 @@ img { max-width: 100%; height: auto; }
   .hero-section { background-attachment: scroll; }
   .hero-title { font-size: 2.4rem; }
   .section-title { font-size: 1.8rem; }
+}
+
+/* -----------------------------------------------
+   17. DISHES
+----------------------------------------------- */
+.dish-row {
+  padding: 1rem;
+  border-radius: 12px;
+  transition: background-color var(--speed);
+}
+.dish-row:hover {
+  background-color: var(--cream);
+}
+[data-theme="dark"] .dish-row:hover {
+  background-color: #252525;
+}
+.dish-thumb {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-color: #d4c4b0;
+}
+/* -----------------------------------------------
+   18. FIX: Ensure Bootstrap Icons font isn't overridden
+----------------------------------------------- */
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  font-family: "bootstrap-icons" !important;
 }

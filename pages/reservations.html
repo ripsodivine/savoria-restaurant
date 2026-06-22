@@ -4,14 +4,260 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Savoria | Reservations</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <!-- Navigation will go here -->
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <span class="brand-gold">Sav</span>oria
+      </a>
 
-  <!-- Reservation form will go here -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <!-- Footer will go here -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link btn-reserve ms-lg-2 active" href="reservations.html">Reserve a Table</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-outline-light btn-sm" id="darkModeToggle" aria-label="Toggle dark mode">
+              <i class="bi bi-moon-fill"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600')">
+    <div class="container">
+      <p class="section-label">Book Your Table</p>
+      <h1>Reservations</h1>
+      <p>Plan your next Savoria dining experience in Westlands</p>
+    </div>
+  </section>
+
+  <!-- ===== RESERVATION FORM ===== -->
+  <section class="py-5" id="reservation-section">
+    <div class="container">
+      <div class="row g-5">
+
+        <div class="col-lg-7">
+          <p class="section-label">Reserve Online</p>
+          <h2 class="section-title mb-4">Make a Reservation</h2>
+
+          <!--
+            This alert starts hidden. main.js displays it when the form
+            passes validation.
+          -->
+          <div class="alert alert-success" id="resSuccess" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            Your reservation request has been received. Our team will confirm it shortly.
+          </div>
+
+          <!--
+            id="reservationForm" connects this form to the reservation
+            validation code in js/main.js.
+          -->
+          <form id="reservationForm" novalidate>
+
+            <div class="mb-3">
+              <label for="resName" class="form-label fw-semibold">
+                Full Name <span class="text-danger">*</span>
+              </label>
+              <input type="text" class="form-control" id="resName"
+                     placeholder="e.g. Justin Mukunzi" required>
+              <small class="form-error" id="resNameError"></small>
+            </div>
+
+            <div class="mb-3">
+              <label for="resEmail" class="form-label fw-semibold">
+                Email Address <span class="text-danger">*</span>
+              </label>
+              <input type="email" class="form-control" id="resEmail"
+                     placeholder="e.g. justin@email.com" required>
+              <small class="form-error" id="resEmailError"></small>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="resDate" class="form-label fw-semibold">
+                  Date <span class="text-danger">*</span>
+                </label>
+                <input type="date" class="form-control" id="resDate" required>
+                <small class="form-error" id="resDateError"></small>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="resTime" class="form-label fw-semibold">
+                  Time <span class="text-danger">*</span>
+                </label>
+                <select class="form-control" id="resTime" required>
+                  <option value="">Select a time...</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="20:00">8:00 PM</option>
+                  <option value="21:00">9:00 PM</option>
+                </select>
+                <small class="form-error" id="resTimeError"></small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="resGuests" class="form-label fw-semibold">
+                Number of Guests <span class="text-danger">*</span>
+              </label>
+              <input type="number" class="form-control" id="resGuests"
+                     min="1" max="20" placeholder="e.g. 4" required>
+              <small class="form-error" id="resGuestsError"></small>
+            </div>
+
+            <div class="mb-4">
+              <label for="resNotes" class="form-label fw-semibold">
+                Special Requests <span class="text-muted fw-normal">(optional)</span>
+              </label>
+              <textarea class="form-control" id="resNotes" rows="4"
+                        placeholder="Dietary needs, celebration details, preferred seating..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold px-5">
+              Request Reservation <i class="bi bi-calendar-check ms-2"></i>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- ===== RESERVATION DETAILS ===== -->
+        <div class="col-lg-5">
+          <p class="section-label">Good To Know</p>
+          <h2 class="section-title mb-4">Dining Details</h2>
+
+          <div class="contact-card text-start mb-4">
+            <i class="bi bi-clock-fill"></i>
+            <h5 class="fw-bold mb-3">Opening Hours</h5>
+            <div class="d-flex justify-content-between py-2 border-bottom">
+              <span>Monday - Thursday</span>
+              <span class="text-muted">12:00 - 22:00</span>
+            </div>
+            <div class="d-flex justify-content-between py-2 border-bottom">
+              <span>Friday - Saturday</span>
+              <span class="text-muted">12:00 - 23:00</span>
+            </div>
+            <div class="d-flex justify-content-between py-2">
+              <span>Sunday</span>
+              <span class="text-muted">11:00 - 21:00</span>
+            </div>
+          </div>
+
+          <div class="contact-card text-start mb-4">
+            <i class="bi bi-info-circle-fill"></i>
+            <h5 class="fw-bold mb-3">Reservation Policy</h5>
+            <p class="text-muted mb-2">
+              Online reservations are requests until confirmed by our team.
+            </p>
+            <p class="text-muted mb-2">
+              For groups larger than 20 guests, please contact us directly for
+              private dining arrangements.
+            </p>
+            <p class="text-muted mb-0">
+              Tables are held for 15 minutes after the confirmed booking time.
+            </p>
+          </div>
+
+          <div class="contact-card text-start">
+            <i class="bi bi-telephone-fill"></i>
+            <h5 class="fw-bold mb-3">Need Help?</h5>
+            <p class="text-muted mb-1">Call our reservations desk:</p>
+            <p class="fw-semibold mb-0">+254 712 345 678</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="mainFooter">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="footer-brand"><span class="brand-gold">Sav</span>oria</h5>
+          <p class="text-muted small mt-2">
+            Italian-African fusion cuisine<br>
+            in the heart of Westlands, Nairobi.
+          </p>
+          <div class="footer-social mt-3">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <h6 class="footer-heading">Explore</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-2">
+          <h6 class="footer-heading">More</h6>
+          <ul class="footer-links">
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="reservations.html">Reservations</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h6 class="footer-heading">Opening Hours</h6>
+          <ul class="footer-links">
+            <li>Mon - Thu: 12:00 - 22:00</li>
+            <li>Fri - Sat: 12:00 - 23:00</li>
+            <li>Sunday: 11:00 - 21:00</li>
+          </ul>
+          <p class="text-muted small mt-2">
+            <i class="bi bi-geo-alt-fill me-1 text-gold"></i>
+            Westlands Avenue, Nairobi
+          </p>
+        </div>
+      </div>
+
+      <hr class="footer-divider mt-4">
+      <p class="text-center text-muted small mb-0">
+        &copy; 2026 Savoria Restaurant. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
 
 </body>
 </html>

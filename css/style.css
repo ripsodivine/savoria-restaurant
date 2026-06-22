@@ -42,6 +42,10 @@ img { max-width: 100%; height: auto; }
   background-color: var(--dark-bg);
   color: var(--dark-text);
 }
+[data-theme="dark"] body {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
 [data-theme="dark"] .section-cream { background-color: var(--dark-surface) !important; }
 [data-theme="dark"] .dish-card,
 [data-theme="dark"] .testimonial-card,
@@ -49,10 +53,21 @@ img { max-width: 100%; height: auto; }
 [data-theme="dark"] .text-muted { color: #999 !important; }
 [data-theme="dark"] .section-title { color: var(--dark-text); }
 [data-theme="dark"] .dish-desc { color: #bbb; }
+[data-theme="dark"] .testimonial-card blockquote { color: #bbb; }
 [data-theme="dark"] .form-control {
   background-color: #2a2a2a;
   border-color: #444;
   color: var(--dark-text);
+}
+[data-theme="dark"] .form-control::placeholder { color: #888; }
+[data-theme="dark"] .btn-outline-dark {
+  color: var(--dark-text);
+  border-color: #666;
+}
+[data-theme="dark"] .btn-outline-dark:hover {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
 }
 
 /* -----------------------------------------------
@@ -307,7 +322,11 @@ img { max-width: 100%; height: auto; }
   transition: box-shadow var(--speed);
 }
 .value-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-.value-card i { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+.value-card i {
+   font-size: 2rem; 
+   color: var(--gold); 
+   margin-bottom: 1rem; 
+  }
 
 [data-theme="dark"] .value-card {
   background-color: #252525;

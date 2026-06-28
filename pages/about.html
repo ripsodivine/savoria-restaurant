@@ -7,21 +7,12 @@
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <!--
-    Note: we use ../css/style.css not css/style.css
-    because this file is inside the pages/ folder,
-    so we go up one level (..) to reach the root.
-  -->
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-  <!--
-    ===== NAVBAR =====
-    Exact same navbar on every page — consistency requirement.
-    Note all links use ../ prefix since we are inside pages/ folder.
-  -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
@@ -36,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html" aria-current="page">About</a></li>
           <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
@@ -55,11 +46,7 @@
     </div>
   </nav>
 
-  <!--
-    ===== PAGE HERO =====
-    Shorter than the home hero — just a banner
-    telling the user which page they are on.
-  -->
+  <!-- ===== PAGE HERO ===== -->
   <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1600')">
     <div class="container">
       <p class="section-label">Who We Are</p>
@@ -68,11 +55,7 @@
     </div>
   </section>
 
-  <!--
-    ===== OUR STORY =====
-    Two columns on desktop: text on left, image on right.
-    col-lg-6 = half width on large screens, full width on mobile.
-  -->
+  <!-- ===== OUR STORY ===== -->
   <section class="py-5" id="our-story">
     <div class="container">
       <div class="row align-items-center g-5">
@@ -99,10 +82,6 @@
           <a href="menu.html" class="btn btn-gold px-4">Explore Our Menu</a>
         </div>
 
-        <!--
-          Image column — we use a div with a background image
-          and set a fixed height so it looks good on all screens.
-        -->
         <div class="col-lg-6">
           <div style="
             background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800');
@@ -117,11 +96,7 @@
     </div>
   </section>
 
-  <!--
-    ===== OUR VALUES =====
-    Three value cards showing what Savoria stands for.
-    col-md-4 = 3 columns on desktop, stacked on mobile.
-  -->
+  <!-- ===== OUR VALUES ===== -->
   <section class="py-5 section-cream" id="values">
     <div class="container">
       <div class="text-center mb-5">
@@ -167,15 +142,11 @@
     </div>
   </section>
 
-  <!--
-    ===== MEET THE CHEF =====
-    Spotlight on the head chef — builds trust and personality.
-  -->
+  <!-- ===== MEET THE CHEF ===== -->
   <section class="py-5" id="chef">
     <div class="container">
       <div class="row align-items-center g-5">
 
-        <!-- Chef photo on the left -->
         <div class="col-lg-5">
           <div style="
             background-image: url('https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800');
@@ -206,7 +177,6 @@
             is evident in every dish at Savoria.
           </p>
 
-          <!-- Achievement badges -->
           <div class="d-flex flex-wrap gap-3">
             <div class="d-flex align-items-center gap-2">
               <i class="bi bi-award-fill text-gold fs-4"></i>
@@ -227,11 +197,7 @@
     </div>
   </section>
 
-  <!--
-    ===== STATS =====
-    Quick numbers that build credibility.
-    col-6 col-md-3 = 2 columns mobile, 4 columns desktop.
-  -->
+  <!-- ===== STATS ===== -->
   <section class="py-5 section-cream" id="stats">
     <div class="container">
       <div class="row text-center g-4">
@@ -255,10 +221,7 @@
     </div>
   </section>
 
-  <!--
-    ===== CTA =====
-    Encourage users to visit or make a reservation.
-  -->
+  <!-- ===== CTA ===== -->
   <section class="py-5 reservation-cta text-center text-white">
     <div class="container">
       <h2 class="fw-bold mb-3">Come Experience Savoria</h2>
@@ -270,11 +233,7 @@
     </div>
   </section>
 
-  <!--
-    ===== FOOTER =====
-    Same footer as index.html but links use ../ prefix
-    since we are inside the pages/ folder.
-  -->
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer" id="mainFooter">
     <div class="container">
       <div class="row g-4">

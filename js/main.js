@@ -23,6 +23,7 @@ function setTheme(theme) {
   const isDark = theme === 'dark';
 
   document.documentElement.toggleAttribute('data-theme', isDark);
+  document.body.classList.toggle('dark-theme', isDark);
   localStorage.setItem('savoria-theme', isDark ? 'dark' : 'light');
 
   if (darkModeToggle) {
@@ -40,7 +41,7 @@ setTheme(savedTheme === 'dark' ? 'dark' : 'light');
 
 if (darkModeToggle) {
   darkModeToggle.addEventListener('click', function () {
-    const isDark = document.documentElement.hasAttribute('data-theme');
+    const isDark = document.body.classList.contains('dark-theme');
     setTheme(isDark ? 'light' : 'dark');
   });
 }

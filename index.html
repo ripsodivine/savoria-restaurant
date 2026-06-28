@@ -5,34 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Savoria | Fine Italian-African Dining within Nairobi</title>
 
-  <!-- Bootstrap 5 CSS — gives us the grid, navbar, buttons, cards -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons — icon font e.g. bi-star, bi-clock -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <!-- Our custom CSS — loaded last so it overrides Bootstrap where needed -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 
 <body>
 
-  <!--
-    ===== NAVBAR =====
-    navbar-expand-lg  → collapses to a hamburger menu on screens smaller than 992px
-    fixed-top         → stays visible at the top while the user scrolls
-  -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
 
-      <!-- Brand name — clicking always returns to home -->
       <a class="navbar-brand" href="index.html">
         <span class="brand-gold">Sav</span>oria
       </a>
 
-      <!--
-        Hamburger button — only visible on mobile.
-        data-bs-target connects it to the collapsible menu below.
-      -->
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false"
@@ -40,21 +28,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Navigation links — ms-auto pushes them to the right side -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/menu.html">Menu</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/team.html">Team</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
-          <!-- Reserve button styled differently to stand out -->
           <li class="nav-item">
             <a class="nav-link btn-reserve ms-lg-2" href="pages/reservations.html">Reserve a Table</a>
           </li>
-          <!-- Dark mode toggle — JS in main.js handles the switching -->
           <li class="nav-item ms-lg-2">
             <button class="btn btn-outline-light btn-sm" id="darkModeToggle" aria-label="Toggle dark mode">
               <i class="bi bi-moon-fill"></i>
@@ -65,24 +50,16 @@
     </div>
   </nav>
 
-  <!--
-    ===== HERO SECTION =====
-    This is the big full-screen banner visitors see first.
-    The actual background image is set in style.css under .hero-section.
-    We use a separate .hero-overlay div to darken the image so white text
-    stays readable on top of it.
-  -->
+  <!-- ===== HERO SECTION ===== -->
   <section class="hero-section" id="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content text-center text-white">
-      <!-- Small uppercase label above the main heading -->
       <p class="hero-tagline">Est. 2018 · Westlands, Nairobi</p>
       <h1 class="hero-title">Where Africa Meets Italy</h1>
       <p class="hero-subtitle">
         Handcrafted pasta, wood-fired pizza, and bold African spices —
         all under one roof in the heart of Westlands.
       </p>
-      <!-- Two CTA buttons — flex so they sit side by side, wrap on mobile -->
       <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
         <a href="pages/reservations.html" class="btn btn-gold btn-lg px-5">
           Reserve a Table
@@ -94,12 +71,7 @@
     </div>
   </section>
 
-  <!--
-    ===== FEATURED DISHES =====
-    col-md-4 = 3 equal columns on medium screens and above.
-    On mobile (default) each column stacks to full width automatically.
-    g-4 = gap of 1.5rem between all columns and rows.
-  -->
+  <!-- ===== FEATURED DISHES ===== -->
   <section class="py-5 section-cream" id="featured">
     <div class="container">
       <div class="text-center mb-5">
@@ -111,11 +83,6 @@
 
         <div class="col-md-4">
           <div class="dish-card h-100">
-            <!--
-              Aspect ratio trick: padding-top: 60% makes this div's height
-              equal to 60% of its width — gives a consistent image ratio
-              regardless of screen size. Background image set inline.
-            -->
             <div class="dish-img" style="background-image: url('https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600')"></div>
             <div class="dish-body">
               <span class="dish-tag">Pasta</span>
@@ -167,12 +134,7 @@
     </div>
   </section>
 
-  <!--
-    ===== WHY CHOOSE US =====
-    col-6 col-md-3 means:
-    - 2 columns on mobile (col-6 = half width)
-    - 4 columns on desktop (col-md-3 = quarter width)
-  -->
+  <!-- ===== WHY CHOOSE US ===== -->
   <section class="py-5" id="why-us">
     <div class="container">
       <div class="text-center mb-5">
@@ -182,7 +144,6 @@
 
       <div class="row g-4 text-center">
         <div class="col-6 col-md-3">
-          <!-- fs-1 = font-size: 2.5rem — makes the icon large -->
           <i class="bi bi-award fs-1 text-gold mb-3 d-block"></i>
           <h6 class="fw-bold">Award-Winning Chef</h6>
           <p class="text-muted small">
@@ -218,11 +179,7 @@
     </div>
   </section>
 
-  <!--
-    ===== TESTIMONIALS =====
-    Real-sounding customer reviews to build trust.
-    blockquote is the semantic HTML tag for quoted text.
-  -->
+  <!-- ===== TESTIMONIALS ===== -->
   <section class="py-5 section-cream" id="testimonials">
     <div class="container">
       <div class="text-center mb-5">
@@ -279,11 +236,7 @@
     </div>
   </section>
 
-  <!--
-    ===== RESERVATION CTA =====
-    Full-width dark banner encouraging users to book a table.
-    Links directly to reservations.html.
-  -->
+  <!-- ===== RESERVATION CTA ===== -->
   <section class="py-5 reservation-cta text-center text-white" id="cta">
     <div class="container">
       <h2 class="fw-bold mb-3">Ready for an Unforgettable Evening?</h2>
@@ -296,13 +249,7 @@
     </div>
   </section>
 
-  <!--
-    ===== FOOTER =====
-    Same footer will appear on ALL 8 pages.
-    Contains links to every page — satisfies the interlinking requirement.
-    Note: pages inside the pages/ folder link back using ../index.html
-    but since this is index.html at the root, we use direct paths.
-  -->
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer" id="mainFooter">
     <div class="container">
       <div class="row g-4">
@@ -362,9 +309,7 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS — required for navbar hamburger to work on mobile -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Our custom JS -->
   <script src="js/main.js"></script>
 
 </body>

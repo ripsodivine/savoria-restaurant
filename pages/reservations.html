@@ -35,7 +35,7 @@
           <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item">
-            <a class="nav-link btn-reserve ms-lg-2 active" href="reservations.html">Reserve a Table</a>
+            <a class="nav-link btn-reserve ms-lg-2 active" href="reservations.html" aria-current="page">Reserve a Table</a>
           </li>
           <li class="nav-item ms-lg-2">
             <button class="btn btn-outline-light btn-sm" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -65,19 +65,11 @@
           <p class="section-label">Reserve Online</p>
           <h2 class="section-title mb-4">Make a Reservation</h2>
 
-          <!--
-            This alert starts hidden. main.js displays it when the form
-            passes validation.
-          -->
           <div class="alert alert-success" id="resSuccess" role="alert">
             <i class="bi bi-check-circle-fill me-2"></i>
             Your reservation request has been received. Our team will confirm it shortly.
           </div>
 
-          <!--
-            id="reservationForm" connects this form to the reservation
-            validation code in js/main.js.
-          -->
           <form id="reservationForm" novalidate>
 
             <div class="mb-3">

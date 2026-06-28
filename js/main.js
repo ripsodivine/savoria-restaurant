@@ -190,10 +190,12 @@ if (menuFilter) {
       filterButtons.forEach(function (button) {
         button.classList.remove('active', 'btn-gold');
         button.classList.add('btn-outline-dark');
+        button.setAttribute('aria-pressed', 'false');
       });
 
       this.classList.add('active', 'btn-gold');
       this.classList.remove('btn-outline-dark');
+      this.setAttribute('aria-pressed', 'true');
 
       menuItems.forEach(function (item) {
         const category = item.getAttribute('data-category');
